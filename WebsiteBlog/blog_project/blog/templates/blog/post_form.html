@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <a href="{% url 'home' %}" style="text-decoration:none; color:black; margin-bottom:20px; display:block;">&larr; Back to Home</a>
+    <div class="card">
+        <h2>Write a New Post</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-green" type="submit">Publish Post</button>
+        </form>
+    </div>
+{% endblock %}

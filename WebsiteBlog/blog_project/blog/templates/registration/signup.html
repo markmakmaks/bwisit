@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card" style="max-width: 400px; margin: 0 auto; text-align: center;">
+        <h2>Create your Beanlog account</h2>
+        <p style="color:gray;">Start sharing your thoughts with the world</p>
+        
+        <form method="POST" style="text-align: left;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn-green" type="submit">Create Account</button>
+        </form>
+        
+        <p style="margin-top:20px;">
+            Already have an account? <a href="{% url 'login' %}" style="color:var(--primary-green);">Sign in</a>
+        </p>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card">
+        <h1>{{ object.title }}</h1>
+        <p style="color: gray; font-size: 0.9em;">By {{ object.author }} on {{ object.created_at|date:"F d, Y" }}</p>
+        <p>{{ object.content }}</p>
+        {% if object.tags %}
+            <p><strong>Tags:</strong> {{ object.tags }}</p>
+        {% endif %}
+        {% if user.is_authenticated and user == object.author %}
+            <a href="{% url 'post-update' object.id %}" class="btn">Edit</a>
+            <a href="{% url 'post-delete' object.id %}" class="btn">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}

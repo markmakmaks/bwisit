@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Welcome to Beanlog</h1>
+    <p>Discover stories, thinking, and expertise from writers on any topic.</p>
+    
+    {% for post in posts %}
+        <div class="card">
+            <h2><a href="{% url 'post-detail' post.id %}" style="text-decoration:none; color:inherit;">{{ post.title }}</a></h2>
+            <p style="color: gray; font-size: 0.9em;">By {{ post.author }} on {{ post.created_at|date:"F d, Y" }}</p>
+            <p>{{ post.content|truncatewords:30 }}</p>
+        </div>
+    {% empty %}
+        <div class="card"><p>No posts yet. Be the first to write one!</p></div>
+    {% endfor %}
+{% endblock %}
